@@ -5,14 +5,14 @@
 #include "B.hpp"
 #include "Base.hpp"
 #include "C.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <random>
 
-std::mt19937* g_rand;
-
 Base* generate()
 {
-    switch ((*g_rand)() & 3)
+    switch (std::rand() & 3)
     {
     case 0:
         std::cout << "Generated A" << std::endl;
@@ -80,9 +80,7 @@ void identify(Base& p)
 
 int main()
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    g_rand = &gen;
+    std::srand(time(NULL));
 
     Base* p = generate();
     std::cout << "Identify pointer: ";
