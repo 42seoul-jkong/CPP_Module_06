@@ -6,6 +6,7 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 
 int main(int argc, char* argv[])
 {
@@ -34,55 +35,42 @@ int main(int argc, char* argv[])
 
     std::cout << std::fixed << std::setprecision(1);
 
-    char c = static_cast<char>(lVal);
     std::cout << "char: ";
-    if (pBegin == pLongEnd || c != lVal)
+    if (pBegin == pLongEnd || lVal < std::numeric_limits<char>::min() || lVal > std::numeric_limits<char>::max())
     {
         std::cout << "impossible";
     }
-    else if (std::isprint(c))
-    {
-        std::cout << "\'" << c << "\'";
-    }
     else
     {
-        std::cout << "Non displayable";
+        char c = static_cast<char>(lVal);
+        if (std::isprint(c))
+        {
+            std::cout << "\'" << c << "\'";
+        }
+        else
+        {
+            std::cout << "Non displayable";
+        }
     }
     std::cout << std::endl;
 
-    int i = static_cast<int>(lVal);
     std::cout << "int: ";
-    if (pBegin == pLongEnd || i != lVal)
+    if (pBegin == pLongEnd || lVal < std::numeric_limits<int>::min() || lVal > std::numeric_limits<int>::max())
     {
         std::cout << "impossible";
     }
     else
     {
-        std::cout << i;
+        std::cout << static_cast<int>(lVal);
     }
     std::cout << std::endl;
 
-    float f = static_cast<float>(dVal);
     std::cout << "float: ";
-    if (pBegin == pDblEnd)
-    {
-        std::cout << "impossible";
-    }
-    else
-    {
-        std::cout << f << "f";
-    }
+    std::cout << static_cast<float>(dVal) << "f";
     std::cout << std::endl;
 
     std::cout << "double: ";
-    if (pBegin == pDblEnd)
-    {
-        std::cout << "impossible";
-    }
-    else
-    {
-        std::cout << dVal;
-    }
+    std::cout << dVal;
     std::cout << std::endl;
 
     return EXIT_SUCCESS;
