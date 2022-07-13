@@ -8,6 +8,8 @@ int main()
 {
     Data d = {0xBADC0FFEE0DDF00Dl, 0xBAADF00D, 0xBEEFCACE, "9016-8C--0FF1CE"};
 
+    std::cout << std::hex;
+
     std::cout << d.rvalue << std::endl;
     std::cout << d.evalue1 << std::endl;
     std::cout << d.evalue2 << std::endl;
@@ -23,7 +25,7 @@ int main()
     std::cout << std::endl;
 
     uintptr_t ptr = serialize(d_ptr);
-    std::cout << std::hex << ptr << std::endl;
+    std::cout << ptr << std::endl;
     std::cout << std::endl;
 
     Data* e_ptr = deserialize(ptr);
