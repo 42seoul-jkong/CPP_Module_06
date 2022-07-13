@@ -86,6 +86,7 @@ int main()
     identify(p);
     std::cout << "Identify reference: ";
     identify(*p);
+    delete p;
 
     return 0;
 }
