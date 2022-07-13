@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include <random>
 
 Base* generate()
 {
